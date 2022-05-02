@@ -3,16 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FooterModule } from './@ui/components/footer/footer.module';
+import { HeaderModule } from './@ui/components/header/header.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonSerivce } from 'src/@shell/services/common.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    HeaderModule,
+    FooterModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    CommonSerivce
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
