@@ -7,8 +7,15 @@ import { User, UserService } from '../../../core';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  path?: string = "sign-in";
+
   constructor() { }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.path = location.pathname.replace('/', '');
+  }
   ngOnDestroy(): void { }
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void { 
+    console.log(this.path);
+  }
 }

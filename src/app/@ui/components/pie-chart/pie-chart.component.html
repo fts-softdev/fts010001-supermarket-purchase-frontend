@@ -1,0 +1,20 @@
+<div class="w-full p-3 h-full">
+  <!--Biểu diễn Card-->
+  <div class="bg-white border rounded shadow h-full">
+    <div class="border-b p-3">
+      <h5 class="font-bold uppercase text-gray-600">{{title}}</h5>
+    </div>
+    <div class="p-5">
+      <div class="flex w-full">
+        <div class="flex-item w-full">
+          <div class="chart">
+            <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions"
+              [plugins]="pieChartPlugins">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/Biểu diễn Card-->
+</div>

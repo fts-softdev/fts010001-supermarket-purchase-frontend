@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { SignComponent } from './sign.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: SignComponent,
     // resolve: {
     //   isAuthenticated: HomeAuthResolver
     // }
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class SignRoutingModule { }

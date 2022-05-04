@@ -1,3 +1,3 @@
 export const DASHBOARD = {
-    root: ''
+    root: 'dashboard'
 }

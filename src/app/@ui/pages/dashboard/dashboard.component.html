@@ -1,6 +1,5 @@
 <!--Container-->
-<div class="container w-full mx-auto pt-20">
-
+<div class="container w-full mx-auto pt-16 lg:pt-24">
     <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
 
         <!--Console Content-->
@@ -117,19 +116,18 @@
         <!--Divider-->
         <hr class="border-b-2 border-gray-400 my-8 mx-4">
 
-        <div class="flex flex-row flex-wrap flex-grow mt-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
 
-            <graph-card></graph-card>
+            <!-- <graph-card [chart-type]="'hello'" tieu-de="Biểu đồ 1"></graph-card>
+            <graph-card [chart-type]="'hello'" tieu-de="Biểu đồ 2"></graph-card>
+            <graph-card [chart-type]="'hello'" tieu-de="Biểu đồ 3"></graph-card>
+            <graph-card [chart-type]="'hello'" tieu-de="Biểu đồ 4"></graph-card> -->
 
-            <graph-card></graph-card>
-
-            <graph-card></graph-card>
-
-            <graph-card></graph-card>
-
-            <graph-card></graph-card>
+            <app-line-chart tieu-de="Thống kê doanh thu"></app-line-chart>
+            <app-bar-chart tieu-de="Thống kê mua bán"></app-bar-chart>
+            <app-pie-chart tieu-de="Mặt hàng được ưa thích"></app-pie-chart>
         </div>
-        <log-table></log-table>
+        <log-table tieu-de="Lịch sử thanh toán"></log-table>
 
     </div>
 </div>
