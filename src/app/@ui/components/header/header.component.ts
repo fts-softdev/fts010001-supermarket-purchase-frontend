@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 
-import { User, UserService } from '../../../core';
-
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html'

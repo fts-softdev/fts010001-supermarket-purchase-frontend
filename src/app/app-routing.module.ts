@@ -34,11 +34,11 @@ const routes: Routes = [
     loadChildren: async () => (await import('./@ui/pages/purchase/purchase.module')).PurchaseModule
   },
 
-  // // storage 
-  // {
-  //   path: STORAGE.root,
-  //   loadChildren: async () => (await import('./@ui/pages/dashboard/dashboard.module')).DashboardModule
-  // },
+  // storage 
+  {
+    path: STORAGE.root,
+    loadChildren: async () => (await import('./@ui/pages/storage/storage.module')).StorageModule
+  },
 
   // // about
   // {

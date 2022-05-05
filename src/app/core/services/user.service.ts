@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, ReplaySubject, throwError } from 'rxjs';
 
-import { User } from '../models';
 import { distinctUntilChanged, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-
+import { UserRequest } from '../request/user.request';
 
 @Injectable()
 export class UserService {
-  private currentUserSubject = new BehaviorSubject<User>({} as User);
+  private currentUserSubject = new BehaviorSubject<UserRequest>({} as UserRequest);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
