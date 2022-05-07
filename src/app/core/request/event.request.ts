@@ -8,32 +8,14 @@ export class EventRequest {
     updatedAt?: string;
 
     /**
-     * from json
+     * set values into this 
      * @param data 
      */
     fromJson(data: any) {
-        this.id = data._id;
-        this.ten = data.ten;
-        this.ngayBatDau = data.ngayBatDau;
-        this.ngayKetThuc = data.ngayKetThuc;
-        this.khuyenMai = data.khuyenMai;
-        this.createdAt = data.createdAt;
-        this.updatedAt = data.updatedAt;
-    }
-
-    /**
-     * to json
-     * @returns 
-     */
-    toJson() {
-        return {
-            id: this.id!,
-            ten: this.ten!,
-            ngayBatDau: this.ngayBatDau!,
-            ngayKetThuc: this.ngayKetThuc!,
-            khuyenMai: this.khuyenMai!,
-            createdAt: this.createdAt!,
-            updatedAt: this.updatedAt!,
+        let t = this as any;
+        for (let key in data) {
+            t[key] = data[key];
         }
+        return t;
     }
 }

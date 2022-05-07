@@ -6,28 +6,14 @@ export class AreaRequest {
     updatedAt?: string;
 
     /**
-     * from json
+     * set values into this 
      * @param data 
      */
     fromJson(data: any) {
-        this.id = data._id;
-        this.tenKhu = data.tenKhu;
-        this.moTa = data.moTa;
-        this.createdAt = data.createdAt;
-        this.updatedAt = data.updatedAt;
-    }
-
-    /**
-     * to json
-     * @returns 
-     */
-    toJson() {
-        return {
-            id: this.id!,
-            tenKhu: this.tenKhu!,
-            moTa: this.moTa!,
-            createdAt: this.createdAt!,
-            updatedAt: this.updatedAt!,
+        let t = this as any;
+        for (let key in data) {
+            t[key] = data[key];
         }
+        return t;
     }
 }

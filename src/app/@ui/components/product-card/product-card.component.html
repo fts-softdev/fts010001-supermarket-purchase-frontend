@@ -1,0 +1,16 @@
+<div class="max-w-sm rounded overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer select-none" *ngIf="data">
+  <img class="w-full"
+    src="{{data.productImage && data.productImage!.length > 0?data.productImage:'./assets/gif/loading.gif'}}"
+    alt="product-image.jpg">
+  <div class="px-6 py-4 text-center">
+    <div class="font-bold text-md mb-2 truncate">
+      {{data.ten}}
+    </div>
+    <p class="text-gray-700 text-sm text-base">
+      {{data.donVi}}
+    </p>
+    <p class="text-gray-700 text-sm text-base">
+      {{commonService.convertToVietnamCurrency(data.donGia!)}}
+    </p>
+  </div>
+</div>

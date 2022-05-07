@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from '../../../shared';
+import { SharedModule } from '../../../core/shared';
 import { StorageRoutingModule } from './storage-routing.module';
 import { StorageComponent } from './storage.component';
 

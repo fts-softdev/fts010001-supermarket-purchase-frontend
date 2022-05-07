@@ -1,6 +1,8 @@
-export class ProductRequest {
+import { ProductCategoryResponse } from "./product-category.response";
+
+export class ProductResponse {
     id?: string;
-    nhomSPId?: string;
+    nhomSPId?: any;
     ten?: string;
     productImage?: string;
     donGia?: number;
@@ -19,6 +21,12 @@ export class ProductRequest {
         for (let key in data) {
             t[key] = data[key];
         }
+
+        t['nhomSPId'] = new ProductCategoryResponse().fromJson(data['nhomSPId']);
+
+        t.id = data._id;
+        delete t._id;
+
         return t;
     }
 }

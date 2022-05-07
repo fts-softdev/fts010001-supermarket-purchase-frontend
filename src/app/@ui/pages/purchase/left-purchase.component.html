@@ -2,19 +2,28 @@
     <div class="w-10/12">
         <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 " id="tabs-tab"
             role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent cursor-pointer active"
-                    id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#don-1" role="tab"
-                    aria-controls="tabs-home" aria-selected="true">Đơn 1</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent cursor-pointer"
-                    id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#don-2" role="tab"
-                    aria-controls="tabs-home" aria-selected="true">Đơn 2</a>
+            <li class="nav-item" role="presentation" *ngFor="let id of keys; let i = index">
+                <a class="nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent 
+                cursor-pointer
+                {{donTaoIndex.split('-')[2] === (i+1).toString()?'active':''}}" id="tabs-home-tab"
+                    data-bs-toggle="pill" attr.data-bs-target="#don-gia-{{i}}" role="tab" aria-controls="tabs-home"
+                    aria-selected="true" (click)="onResetDonIndexClick(id)">Đơn {{i+1}}</a>
             </li>
         </ul>
         <div class="tab-content" id="tabs-tabContent">
-            <div class="tab-pane fade show active" id="don-1" role="tabpanel" aria-labelledby="tabs-home-tab">
+            <div class="tab-pane fade show {{i==0?'active':''}}" *ngFor="let id of keys; let i = index"
+                id="don-gia-{{i}}" role="tabpanel" aria-labelledby="tabs-home-tab">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-60">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -41,51 +50,44 @@
                         </thead>
                         <tbody>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                                *ngFor="let item of data; let i = index">
+                                *ngFor="let item of getDonTaos; let i = index">
                                 <td class="px-6 py-4 text-right">
-                                    <button class="bg-red-600 text-white hover:bg-blue-700 rounded p-2">Xóa</button>
+                                    <button class="bg-red-600 text-white hover:bg-blue-700 rounded p-2"
+                                        (click)="onXoaItemFromQuote(item.id)">Xóa</button>
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                    {{item.id}}
+                                    {{i+1}}
                                 </th>
                                 <td class="px-6 py-4">
                                     {{item.ten}}
                                 </td>
                                 <td class="px-6 py-4">
                                     <input type="number" class="bg-gray-100 p-1 rounded" min="1" max="100"
-                                        [value]="inputs[i]" (change)="onSoLuongChange($event, i)" style="width: 50px;">
+                                        [value]="item.soLuong" (change)="onSoLuongChange($event, i)"
+                                        style="width: 50px;">
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{commonService.convertToVietnamCurrency(item.donGia)}}
-                                </td> 
+                                    {{commonService.convertToVietnamCurrency(item.donGia!)}}
+                                </td>
                                 <td class="px-6 py-4">
-                                    {{item.nhomSPId}}
+                                    {{item.nhomSPId.tenNhom}}
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
-
-            </div>
-            <div class="tab-pane fade" id="don-2" role="tabpanel" aria-labelledby="tabs-profile-tab">
-                Tab 2 content
             </div>
         </div>
 
-        <div class="flex bg-gray-100 p-2 w-full">
+        <div class="flex bg-gray-100 p-2 w-full overflow-auto">
             <div class="w-3/12 mr-5">
                 <div class="mt-10">
                     <div class="mb-4">
                         <button class="rounded p-2 text-center bg-sky-600 text-white w-full"
                             (click)="onThanhToanClick()">TT
                             Hóa đơn</button>
-                    </div>
-                    <div class="mb-4">
-                        <button class="rounded p-2 text-center bg-sky-600 text-white w-full"
-                            (click)="onGhiChuClick()">Ghi
-                            chú</button>
                     </div>
                 </div>
             </div>
@@ -144,7 +146,7 @@
                     <div class="w-6/12 flex items-center">
                         <input
                             class="text-right shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="moneyFromCus" type="text" placeholder="Tiền nhận từ khách" value="{{tienNhan}}">
+                            type="text" placeholder="Tiền nhận từ khách" value="{{tienNhan}}" #moneyFromCus>
                     </div>
                     <div class="w-2/12 flex items-center">
                         <svg class="h-8 w-8 text-gray-500" fill="none" viewBox="-5 -5 30 30" stroke="currentColor">

@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, ReplaySubject, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
-import { distinctUntilChanged } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { UserRequest } from '../request/user.request';
 
 @Injectable()
-export class UserService {
-  private currentUserSubject = new BehaviorSubject<UserRequest>({} as UserRequest);
-  public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
-
-  private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
-  public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-
+export class AreaService {
   url: string = environment.api_url;
 
   // Http Options
@@ -49,7 +42,7 @@ export class UserService {
    * @returns status
    */
   async getAll() {
-    return this.http.get(`${environment.api_url}/users`);
+    return this.http.get(`${environment.api_url}/areas`);
   }
 
   /**
@@ -58,7 +51,7 @@ export class UserService {
    * @returns status
    */
   async find(id: string) {
-    return this.http.get(`${environment.api_url}/users/${id}`, {});
+    return this.http.get(`${environment.api_url}/areas/${id}`);
   }
 
   /**
@@ -68,7 +61,7 @@ export class UserService {
    */
   async update(body: object) {
     return this.http.patch(
-      `${environment.api_url}/users`,
+      `${environment.api_url}/areas`,
       JSON.stringify(body)
     );
   }
@@ -80,7 +73,7 @@ export class UserService {
    */
   async add(body: object = {}) {
     return this.http.post(
-      `${environment.api_url}/users`,
+      `${environment.api_url}/areas`,
       JSON.stringify(body)
     );
   }
@@ -92,7 +85,7 @@ export class UserService {
    */
   async delete(id: string) {
     return this.http.delete(
-      `${environment.api_url}/users/${id}`
+      `${environment.api_url}/areas/${id}`
     );
   }
 }

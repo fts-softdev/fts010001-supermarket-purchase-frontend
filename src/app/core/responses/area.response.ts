@@ -1,9 +1,7 @@
-export class DonThanhToanRequest {
+export class AreaResponse {
     id?: string;
-    danhSachDatMuaIds?: string[];
-    tongTien?: number;
-    tongDon?: number;
-    eventId?: string;
+    tenKhu?: string;
+    moTa?: string;
     createdAt?: string;
     updatedAt?: string;
 
@@ -16,6 +14,9 @@ export class DonThanhToanRequest {
         for (let key in data) {
             t[key] = data[key];
         }
+        t.id = data._id;
+        delete t._id;
+
         return t;
     }
 }

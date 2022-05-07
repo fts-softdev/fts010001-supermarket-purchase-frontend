@@ -1,9 +1,9 @@
-export class DonThanhToanRequest {
+export class DonThanhToanResponse {
     id?: string;
-    danhSachDatMuaIds?: string[];
+    danhSachDatMuaIds?: any[];
     tongTien?: number;
     tongDon?: number;
-    eventId?: string;
+    eventId?: any;
     createdAt?: string;
     updatedAt?: string;
 
@@ -16,6 +16,9 @@ export class DonThanhToanRequest {
         for (let key in data) {
             t[key] = data[key];
         }
+        t.id = data._id;
+        delete t._id;
+
         return t;
     }
 }

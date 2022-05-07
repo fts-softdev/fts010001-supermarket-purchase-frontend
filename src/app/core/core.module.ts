@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
-
-import {
-  ApiService,
-  AuthGuard,
-  JwtService,
-  UserService
-} from './services';
+import { AreaService } from './services/area.service';
+import { ProductCategoryService } from './services/product-category.service';
+import { ProductService } from './services/product.service';
+import { UserService } from './services/user.service';
+import { SharedModule } from './shared';
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
-    ApiService,
-    AuthGuard,
-    JwtService,
-    UserService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ServerErrorInterceptor,
+    //   multi: true,
+    // },
+    // { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
+    // ApiService,
+    // AuthGuard,
+    // JwtService,
+
+    UserService,
+    ProductService,
+    ProductCategoryService,
+    AreaService,
   ],
   declarations: []
 })

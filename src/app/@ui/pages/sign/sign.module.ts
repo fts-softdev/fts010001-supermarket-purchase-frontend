@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from '../../../shared';
+import { SharedModule } from '../../../core/shared';
 // import { GraphCardModule } from '../../components/graph-card/graph-card.module';
 import { LoginModule } from '../../components/login/login.module';
 import { SignupModule } from '../../components/signup/signup.module';

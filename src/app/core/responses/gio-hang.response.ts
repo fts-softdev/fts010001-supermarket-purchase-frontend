@@ -1,9 +1,9 @@
-export class DonThanhToanRequest {
+export class GioHangResponse {
     id?: string;
-    danhSachDatMuaIds?: string[];
-    tongTien?: number;
-    tongDon?: number;
-    eventId?: string;
+    productId?: any;
+    soLuong?: number;
+    userId?: any;
+    trangThai?: number;
     createdAt?: string;
     updatedAt?: string;
 
@@ -16,6 +16,9 @@ export class DonThanhToanRequest {
         for (let key in data) {
             t[key] = data[key];
         }
+        t.id = data._id;
+        delete t._id;
+
         return t;
     }
 }

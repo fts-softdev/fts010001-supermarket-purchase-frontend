@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CommonSerivce } from 'src/@shell/services/common.service';
+import { CommonService } from 'src/@shell/services/common.service';
 
 // models
 
@@ -17,7 +17,7 @@ export class StorageComponent implements OnInit, OnDestroy, AfterViewInit {
   subscription: Subscription[] = [];
 
   constructor(
-    public commonService: CommonSerivce
+    public commonService: CommonService
   ) { }
 
   /**

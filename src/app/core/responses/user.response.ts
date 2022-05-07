@@ -1,4 +1,4 @@
-export class UserRequest {
+export class UserResponse {
   id?: string;
   hoten?: string;
   soDienThoai?: string;
@@ -20,6 +20,9 @@ export class UserRequest {
     for (let key in data) {
       t[key] = data[key];
     }
+    t.id = data._id;
+    delete t._id;
+
     return t;
   }
 }

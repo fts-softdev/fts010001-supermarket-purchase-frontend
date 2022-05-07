@@ -8,32 +8,14 @@ export class GioHangRequest {
     updatedAt?: string;
 
     /**
-     * from json
+     * set values into this 
      * @param data 
      */
     fromJson(data: any) {
-        this.id = data._id;
-        this.productId = data.productId;
-        this.soLuong = data.soLuong;
-        this.userId = data.userId;
-        this.trangThai = data.trangThai;
-        this.createdAt = data.createdAt;
-        this.updatedAt = data.updatedAt;
-    }
-
-    /**
-     * to json
-     * @returns 
-     */
-    toJson() {
-        return {
-            id: this.id!,
-            productId: this.productId!,
-            soLuong: this.soLuong!,
-            userId: this.userId!,
-            trangThai: this.trangThai!,
-            createdAt: this.createdAt!,
-            updatedAt: this.updatedAt!,
+        let t = this as any;
+        for (let key in data) {
+            t[key] = data[key];
         }
+        return t;
     }
 }
